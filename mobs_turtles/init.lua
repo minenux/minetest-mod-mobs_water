@@ -56,7 +56,7 @@ if mobs.mod and mobs.mod == "redo" then
 			self.state = ""
 			self:set_velocity(0)
 			self.object:set_animation({x=self.animation.hide_start, y=self.animation.hide_end}, self.animation.speed_normal, 0)
-			minetest.after(5, function() 
+			minetest.after(5, function()
 				self.state = "stand"
 			end)
 			mobs:capture_mob(self, clicker, 0, 80, 100, true, nil)
