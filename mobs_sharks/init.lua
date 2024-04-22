@@ -1,4 +1,9 @@
 
+local shark_large = minetest.settings:get_bool("mobs_sharks.enable_large", true)
+local shark_medium = minetest.settings:get_bool("mobs_sharks.enable_medium", true)
+local shark_small = minetest.settings:get_bool("mobs_sharks.enable_small", true)
+local shark_spawn_chance = 60000
+
 if mobs.mod and mobs.mod == "redo" then
 
 -- local variables
@@ -23,22 +28,22 @@ if mobs.mod and mobs.mod == "redo" then
 	local l_egg_texture		= "mob_shark_shark_item.png"
 	local l_spawn_in		= {"default:water_flowing","default:water_source"}
 	local l_spawn_near		= {"default:water_flowing","default:water_source","seawrecks:woodship","seawrecks:uboot"}
-	local l_spawn_chance	= 60000
+	local l_spawn_chance	= shark_spawn_chance
 
 -- load settings
 	dofile(minetest.get_modpath("mobs_sharks").."/SETTINGS.txt")
-	if not ENABLE_SHARK_LARGE then
+	if not shark_large then
 		l_spawn_chance = l_spawn_chance - 20000
 	end
-	if not ENABLE_SHARK_MEDIUM then
+	if not shark_medium then
 		l_spawn_chance = l_spawn_chance - 20000
 	end
-	if not ENABLE_SHARK_SMALL then
+	if not shark_small then
 		l_spawn_chance = l_spawn_chance - 20000
 	end
 
 -- large
-	if ENABLE_SHARK_LARGE then
+	if shark_large then
 		mobs:register_mob("mobs_sharks:shark_lg", {
 			type = "monster",
 			attack_type = "dogfight",
@@ -91,7 +96,7 @@ if mobs.mod and mobs.mod == "redo" then
 	end
 
 -- medium
-	if ENABLE_SHARK_MEDIUM then
+	if shark_medium then
 		mobs:register_mob("mobs_sharks:shark_md", {
 			type = "monster",
 			attack_type = "dogfight",
@@ -129,7 +134,7 @@ if mobs.mod and mobs.mod == "redo" then
 	end
 
 -- small
-	if ENABLE_SHARK_SMALL then
+	if shark_small then
 		mobs:register_mob("mobs_sharks:shark_sm", {
 			type = "monster",
 			attack_type = "dogfight",
