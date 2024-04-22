@@ -1,7 +1,7 @@
 
-if mobs.mod and mobs.mod == "redo" then
+local SPRITE_VERSION = minetest.settings:get("mobs_fish.fish_sprite") or false -- set to true to use upright sprites instead of meshes of texture mapping, more faster on slow machines without 3d good gpu
 
-local SPRITE_VERSION = false	-- set to true to use upright sprites instead of meshes
+if mobs.mod and mobs.mod == "redo" then
 
 -- local variables
 	local l_spawn_in		= {"default:water_source", "default:water_flowing", "default:river_water_source", "default:river_water_flowing"}

@@ -1,0 +1,3 @@
+#    Enable use sprites on slow cpus that dont have good 3d opengl procesing
+mobs_fish.fish_sprite (Enable usage of sprites event mesh of texture map) bool false
+
