@@ -1,3 +1,13 @@
+-- load settings
+local croc_walkers = minetest.settings:get_bool("mobs_crocs.enable_walkers", true)
+local croc_floaters = minetest.settings:get_bool("mobs_crocs.enable_floaters", true)
+local croc_swimmers = minetest.settings:get_bool("mobs_crocs.enable_swimmers", true)
+local croc_spawn_chance = 60000
+
+-- tweak croc spawn chance depending on which one's are enabled
+croc_spawn_chance = croc_spawn_chance - (croc_walkers and 0 or 20000)
+croc_spawn_chance = croc_spawn_chance - (croc_floaters and 0 or 20000)
+croc_spawn_chance = croc_spawn_chance - (croc_swimmers and 0 or 20000)
 
 if mobs.mod and mobs.mod == "redo" then
 
@@ -16,22 +26,10 @@ if mobs.mod and mobs.mod == "redo" then
 	local l_model			= "crocodile.x"
 	local l_sounds			= {random = "croco"}
 	local l_egg_texture		= "default_grass.png"
-	local l_spawn_chance	= 60000
-
--- load settings
-	dofile(minetest.get_modpath("mobs_crocs").."/SETTINGS.txt")
-	if not ENABLE_WALKERS then
-		l_spawn_chance = l_spawn_chance - 20000
-	end
-	if not ENABLE_FLOATERS then
-		l_spawn_chance = l_spawn_chance - 20000
-	end
-	if not ENABLE_SWIMMERS then
-		l_spawn_chance = l_spawn_chance - 20000
-	end
+	local l_spawn_chance	= croc_spawn_chance
 
 -- no float
-	if ENABLE_WALKERS then
+	if croc_walkers then
 		mobs:register_mob("mobs_crocs:crocodile", {
 			type = "monster",
 			attack_type = "dogfight",
@@ -69,7 +67,7 @@ if mobs.mod and mobs.mod == "redo" then
 	end
 
 -- float
-	if ENABLE_FLOATERS then
+	if croc_floaters then
 		mobs:register_mob("mobs_crocs:crocodile_float", {
 			type = "monster",
 			attack_type = "dogfight",
@@ -106,7 +104,7 @@ if mobs.mod and mobs.mod == "redo" then
 	end
 
 -- swim
-	if ENABLE_SWIMMERS then
+	if croc_swimmers then
 		mobs:register_mob("mobs_crocs:crocodile_swim", {
 			type = "monster",
 			attack_type = "dogfight",
