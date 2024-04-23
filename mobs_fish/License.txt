@@ -1,5 +1,6 @@
 Licenses
 
+Code:  CC-BY-SA-NC
 Model/Textures: CC-BY-SA 3.0
 Author: Sapier
 

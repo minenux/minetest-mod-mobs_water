@@ -1,4 +1,5 @@
 Licenses
 
+Code: CC-BY-SA-NC
 Model/Textures: GPL v3
 Author: Team NPX
